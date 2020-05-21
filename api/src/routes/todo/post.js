@@ -15,8 +15,8 @@ exports = module.exports = function(app, db) {
 
                 const task = {
                     taskName: inputs.taskName,
-                    expired: inputs.expired,
-                    completionStatus: false,
+                    expiry: inputs.expiry,
+                    completionStatus: inputs.status,
                     createdBy: req.user.id,
                     createdAt: inputs.createdAt,
                     updatedAt: inputs.updatedAt

@@ -6,8 +6,8 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         taskName: Sequelize.STRING,
-        expired: Sequelize.DATE,
-        completionStatus: Sequelize.BOOLEAN,
+        expiry: Sequelize.DATE,
+        completionStatus: Sequelize.STRING,
         createdBy: Sequelize.INTEGER,
         createdAt: Sequelize.DATE,
         updatedAt: Sequelize.DATE
