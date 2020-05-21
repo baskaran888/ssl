@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { LocalStorageService } from './localStorage.service';
+
 import * as _ from 'lodash';
 
 @Injectable()
@@ -14,7 +16,7 @@ export class ApiService {
   private DEFAULT_MAX_HTTP_TIME = 30000;
   private DOCUMENT_MAX_HTTP_TIME = 50000;
 
-  constructor(private http: HttpClient, protected router: Router) {
+  constructor(private http: HttpClient, protected router: Router, private storage: LocalStorageService) {
   }
 
   async _fetchRaw(method, url, data, maxTime, type?): Promise<any> {
@@ -31,7 +33,7 @@ export class ApiService {
     const apiUrl = this.baseUrl + url;
     const apiVerb = method;
     let params = new HttpParams();
-    const headers = new HttpHeaders();
+    let headers = new HttpHeaders();
 
     try {
 
@@ -48,6 +50,9 @@ export class ApiService {
         });
       }
 
+      const accessToken = await this.storage.get('accessToken');
+
+      headers = headers.set('Authorization', 'Bearer ' + accessToken);
 
       let httpRequest = new HttpRequest(_.toUpper(apiVerb), apiUrl, data, {
         headers: headers,
@@ -60,8 +65,6 @@ export class ApiService {
           params: params
         });
       }
-
-      console.log('====>>> requet ==> ', httpRequest);
 
       const result = await this.http
         .request(httpRequest).pipe(

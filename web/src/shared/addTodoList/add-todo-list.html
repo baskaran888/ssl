@@ -1,0 +1,22 @@
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <input matInput type="text"
+            [(ngModel)]="taskName"
+            name="taskName"
+            placeholder="Task Name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="expiry"
+           type="date"
+           name="expiry" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-placeholder>Status</mat-placeholder>
+    <select [(ngModel)]="status" matNativeControl required>
+      <option value="Open">Open</option>
+      <option value="In Progress">In progress</option>
+      <option value="Done">Done</option>
+    </select>
+  </mat-form-field>
+  <button (click)="save()" mat-raised-button class="md-button">Save</button>
+</div>

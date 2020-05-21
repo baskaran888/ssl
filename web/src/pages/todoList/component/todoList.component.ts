@@ -12,6 +12,7 @@ import { IToDoListModel } from '../../../models/IToDoListModel';
 
 export class TodoListComponent implements OnInit {
 
+
   constructor(private api: ApiService, private route: RouteService) {
 
   }
@@ -20,13 +21,24 @@ export class TodoListComponent implements OnInit {
     {taskName: 'Sample task', createdAt: '20-05-2020', editedAt: '21-5-2020', expiry: '25-05-2020', completionStatus: 'Completed', createdBy: 'Baskaran'},
   ];
   public displayedColumns: string[];
+  public add = false;
+  public list = true;
 
   ngOnInit() {
-    this.displayedColumns = ['position', 'taskName', 'createdAt', 'editedAt', 'expiry', 'completionStatus', 'createdBy'];
+    this.displayedColumns = ['position', 'taskName', 'createdAt', 'editedAt', 'expiry', 'completionStatus', 'createdBy', 'Actions'];
   }
 
   public cancel() {
     this.route.transition_to_login();
   }
 
+  public toggleAdd() {
+    this.add = true;
+    this.list = false;
+  }
+
+  public toggleList() {
+    this.add = false;
+    this.list = true;
+  }
 }
