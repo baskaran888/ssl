@@ -5,7 +5,7 @@ import { RouteService } from '../../../services/route.service';
 import { IRegisterModel } from '../../../models';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

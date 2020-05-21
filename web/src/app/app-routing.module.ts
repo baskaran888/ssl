@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: '../pages/register/register-routing.module#RegisterRoutingModule'
   },
   {
-    path: 'todolist',
+    path: 'to-do-list',
     loadChildren: '../pages/todoList/todoList-routing.module#TodoListRoutingModule'
   }
 ];
