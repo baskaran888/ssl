@@ -6,6 +6,8 @@ const route = require('./src/service/mainRoute/routes');
 
 const cors = require('./src/service/cors');
 
+const authentication = require('./src/service/authentication');
+
 const db = require('./src/models');
 
 const port = 3000;
@@ -24,7 +26,7 @@ async function appInit() {
         db.sequelize.sync();
 
         app.all('*', cors);
-        // app.all('*', authentication(app, db));
+        app.all('*', authentication(app, db));
 
         await route(app, db);
 

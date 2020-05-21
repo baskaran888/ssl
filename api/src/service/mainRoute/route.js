@@ -14,8 +14,6 @@ Route.prototype.getPostedFormData = function(httpRequest) {
     return new bPromise(function(resolve, reject) {
         const form = new formidable.IncomingForm();
 
-        // If the request isn't multipart, don't use formidable and just
-        // rely on the express bodyParser middleware.
         if (!_.has(httpRequest.headers, 'content-type')) {
             return resolve({
                 fields: [],
@@ -28,13 +26,11 @@ Route.prototype.getPostedFormData = function(httpRequest) {
             });
         }
 
-        // set upload settings
         form.uploadDir = os.tmpdir();
         form.keepExtensions = true;
         form.type = 'multipart';
         form.hash = true;
 
-        // now parse the form
         form.parse(httpRequest, function(err, fields, files) {
             if (err) {
                 return reject(err);

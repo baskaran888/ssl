@@ -6,7 +6,6 @@ const _ = require('lodash');
 const Route = require('./route');
 
 const routePath = path.join(__dirname, '../../routes/');
-const trustedEndpoints = ['get', 'delete', 'put', 'post'];
 
 exports = module.exports = function(app, db) {
     return new bPromise(async function(resolve, reject) {
@@ -19,10 +18,6 @@ exports = module.exports = function(app, db) {
         walker(routePath)
             .on('file', function(file) {
                 extension = path.extname(file);
-
-                /*  if (_.toLower(extension) !== '.js') {
-                    return;
-                  }*/
 
                 files.unshift(file);
             })
