@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 import { ApiService } from '../../../services/api.service';
 import { RouteService } from '../../../services/route.service';
@@ -17,15 +18,33 @@ export class TodoListComponent implements OnInit {
 
   }
 
+  // public data: any;
+
   public data: IToDoListModel[] = [
-    {taskName: 'Sample task', createdAt: '20-05-2020', editedAt: '21-5-2020', expiry: '25-05-2020', completionStatus: 'Completed', createdBy: 'Baskaran'},
+    {taskName: '', createdAt: '', updatedAt: '', expiry: '', completionStatus: '', createdBy: ''},
   ];
   public displayedColumns: string[];
   public add = false;
   public list = true;
 
-  ngOnInit() {
-    this.displayedColumns = ['position', 'taskName', 'createdAt', 'editedAt', 'expiry', 'completionStatus', 'createdBy', 'Actions'];
+  async ngOnInit() {
+    this.displayedColumns = ['position', 'taskName', 'createdAt', 'updatedAt', 'expiry', 'completionStatus', 'createdBy', 'Actions'];
+    console.log('-->', this.data);
+
+    this.data = await this.api.get('/todos');
+
+    await this.format();
+    console.log('-->', this.data);
+  }
+
+  public async format() {
+
+    for (let i = 0; i < this.data.length; i++) {
+      this.data[i].expiry = moment(this.data[i].expiry).format('YYYY-MM-DD');
+      this.data[i].createdAt = moment(this.data[i].createdAt).format('YYYY-MM-DD');
+      this.data[i].updatedAt = moment(this.data[i].updatedAt).format('YYYY-MM-DD');
+      this.data[i].createdBy = await this.api.get(`/user/${this.data[i].createdBy}`);
+    }
   }
 
   public cancel() {
@@ -40,5 +59,11 @@ export class TodoListComponent implements OnInit {
   public toggleList() {
     this.add = false;
     this.list = true;
+  }
+
+  public async refresh() {
+    this.data = await this.api.get('/todos');
+
+    await this.format();
   }
 }

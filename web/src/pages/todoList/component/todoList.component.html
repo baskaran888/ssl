@@ -3,11 +3,12 @@
   <mat-tab-group mat-align-tabs="start">
     <mat-tab (click)="toggleList()" label="List">
       <todo-list [data]="data"
-                 [displayedColumns]="displayedColumns">
+                 [displayedColumns]="displayedColumns"
+                 (deleteTask) = "refresh()">
       </todo-list>
     </mat-tab>
     <mat-tab (click)="toggleAdd()" label="Add task">
-       <add-todo-list></add-todo-list>
+       <add-todo-list (taskCreated)="refresh()"></add-todo-list>
     </mat-tab>
   </mat-tab-group>
   <mat-tab-group mat-align-tabs="end">

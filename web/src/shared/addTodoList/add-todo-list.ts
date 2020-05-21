@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { ApiService } from '../../services/api.service';
 
+import * as moment from 'moment';
+
 @Component({
   selector    : 'add-todo-list',
   templateUrl : './add-todo-list.html',
@@ -22,10 +24,10 @@ export class AddTodoListComponent {
   public async save() {
     const payload = {
       taskName: this.taskName,
-      expiry: this.expiry,
+      expiry: moment(this.expiry).format('YYYY-MM-DD'),
       status: this.status,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: moment(new Date()).format('YYYY-MM-DD'),
+      updatedAt: moment(new Date()).format('YYYY-MM-DD'),
     };
     console.log('payload', payload);
     const url = '/todo';

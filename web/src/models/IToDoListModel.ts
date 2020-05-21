@@ -1,7 +1,7 @@
 export interface IToDoListModel {
   taskName: string;
   createdAt: string;
-  editedAt: string;
+  updatedAt: string;
   expiry: string;
   completionStatus: string;
   createdBy: string;

@@ -24,3 +24,17 @@ th.mat-column-position, td.mat-column-position {
 .mat-table-sticky:last-child {
   border-left: 1px solid #e0e0e0;
 }
+
+.md-button {
+  padding: 0 6px 0 6px;
+  margin: 6px 8px 6px 8px;
+  min-width: 88px;
+  background-color: crimson;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
+}
