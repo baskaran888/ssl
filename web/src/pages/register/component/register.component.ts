@@ -14,7 +14,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private api: ApiService, private route: RouteService) { }
 
-  public postData: IRegisterModel;
+  public postData: IRegisterModel = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  };
 
   ngOnInit() {
     console.log('init');

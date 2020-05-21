@@ -1,41 +1,48 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form>
-      <table>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="First Name" [(ngModel)]="postData.firstName" name="username" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field>
-            <input matInput placeholder="Last Name" [(ngModel)]="postData.lastName" type="password" name="password" required>
-          </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Username" [(ngModel)]="postData.userName" name="username" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field>
-            <input matInput placeholder="Password" [(ngModel)]="postData.password" type="password" name="password" required>
-          </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="cancel()" color="primary">Back</button>
-    <button mat-raised-button (click)="register()" color="primary">Register</button>
-  </mat-card-actions>
-</mat-card>
+
+<div class="register">
+      <span class="form-title">
+    CREATE NEW ACCOUNT
+      </span>
+  <form>
+    <div class="wrap-input" data-validate = "Enter FirstName">
+      <input class="input"
+             type="text"
+             name="firstName"
+             matInput autofocus
+             [(ngModel)]="postData.firstName" required
+             placeholder="FirstName">
+    </div>
+    <div class="wrap-input" data-validate = "Enter LastName">
+      <input class="input"
+             type="text"
+             name="lastName"
+             matInput autofocus
+             [(ngModel)]="postData.lastName" required
+             placeholder="LastName">
+    </div>
+    <div class="wrap-input" data-validate = "Enter Email">
+      <input class="input"
+             type="text"
+             name="email"
+             matInput autofocus
+             [(ngModel)]="postData.email" required
+             placeholder="Email">
+    </div>
+    <div class="wrap-input" data-validate = "Enter Password">
+      <input class="input"
+             type="password"
+             name="password"
+             matInput autofocus
+             [(ngModel)]="postData.password" required
+             placeholder="Password">
+    </div>
+    <button class="cancel-btn"
+            mat-button (click)="cancel()">
+      Cancel
+    </button>
+    <button class="register-btn"
+            mat-button (click)="register()">
+      Register
+    </button>
+  </form>
+</div>

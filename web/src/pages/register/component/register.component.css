@@ -1,0 +1,61 @@
+.login {
+  width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 55px;
+  background: #fff;
+}
+.form-title {
+  font-family: Montserrat,sans-serif;
+  color: #004660;
+  text-align: center;
+  display: block;
+  padding: 27px 0 34px 0;
+}
+.wrap-input {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid #ced4da;
+  margin-bottom: 30px;
+}
+.input {
+  font-family: Montserrat,sans-serif;
+  font-size: 16px;
+  color: #004660;
+  line-height: 1.2;
+  display: block;
+  width: 457px;
+  height: 45px;
+  background: transparent;
+  padding: 0 5px 0 38px;
+}
+input {
+  outline: none;
+  border: none;
+}
+input:focus {
+  border-color: transparent !important;
+}
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+button:hover {
+  cursor: pointer;
+}
+.cancel-btn {
+  font-family: Montserrat,sans-serif;
+  width: 40%;
+  color: #fff;
+  height: 50px;
+  background: #004660;
+}
+.register-btn {
+  font-family: Montserrat,sans-serif;
+  width: 40%;
+  color: #fff;
+  height: 50px;
+  background: #004660;
+  float: right;
+}
